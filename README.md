@@ -26,7 +26,12 @@ Switcher works by initializing it and then adding the .js-switcher class on your
   <code>&lt;img class='js-switcher' data-breakpoint='900'&gt;</code>
 </pre>
 
-2. data-largeImage - this dataset will be the image source greater than the value on breakpoint.
+2. data-largeImage - this dataset will be the image source greater than the value of breakpoint.
 <pre>
   <code>&lt;img class='js-switcher' data-breakpoint='900' data-largeImage='image/desktop.png'&gt;</code>
+</pre>
+
+3. data-smallImage - this dataset will be the image source less than the value of breakpoint.
+<pre>
+  <code>&lt;img class='js-switcher' data-breakpoint='900' data-largeImage='image/desktop.png' data-smallImage='image/mobile.png'&gt;</code>
 </pre>
