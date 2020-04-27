@@ -2,7 +2,7 @@
 A javscript function that switch different image source or background source for different breakpoints or device.
 
 ## Install
-Download the file or pull it on your local folder and then include manually the file on your main javascript file.
+Download the file or pull it on your local folder and then add it on your script folder or include it on script file.
 
 ## Usage
 Switcher works by initializing it and then adding the .js-switcher class on your element and its custom dataset.
