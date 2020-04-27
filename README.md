@@ -1,5 +1,5 @@
 # Switcher
-A javscript function that switch different image source or background source for different breakpoints or device.
+A javascript function that will switch different image source or background source for different breakpoints or device width.
 
 ## Install
 Download the file or pull it on your local folder and then add it on your script folder or include it on script file.
