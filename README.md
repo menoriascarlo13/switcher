@@ -7,6 +7,9 @@ Download the file or pull it on your local folder. Add it on your script folder 
 ## Usage
 Switcher works by initializing it and then adding the .js-switcher class on your element and its custom dataset.
 
+### Dependencies
+None
+
 ### Initialize
 <pre>
   window.addEventListener('load', function () {
