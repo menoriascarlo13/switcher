@@ -18,12 +18,18 @@ Switcher works by initializing it and then adding the .js-switcher class on your
 <pre>
   <code>&lt;img class='js-switcher'&gt;</code>
 </pre>
+<pre>
+  <code>&lt;div class='js-switcher'&gt;&lt;/div&gt;</code>
+</pre>
 
 ## Options
 ### Datasets
 1. data-breakpoint - by adding this dataset, it will detect the breakpoint on when to switch the image source of your element. Its value will be represented on pixel.
 <pre>
   <code>&lt;img class='js-switcher' data-breakpoint='900'&gt;</code>
+</pre>
+<pre>
+  <code>&lt;div class='js-switcher' data-breakpoint='900'&gt;&lt;/div&gt;</code>
 </pre>
 
 2. data-largeImage - this dataset will be the image source greater than the value of breakpoint.
