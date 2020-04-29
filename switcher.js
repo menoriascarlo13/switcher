@@ -26,8 +26,6 @@ switcher.init = function (resize, debounceTimer) {
 
     switcher.process();
 
-    console.log(switcher.detectIE());
-
     if (resize) {
         window.addEventListener('resize', switcher.debounce(function () {
             switcher.process();
@@ -45,7 +43,6 @@ switcher.process = function () {
 }
 
 switcher.detect = function (ele, eleTag) {
-    switcher.parseSet(ele.dataset.largeimage);
     let isSrc = (window.innerWidth < ele.dataset.breakpoint) ? ele.dataset.smallimage : ele.dataset.largeimage;
     if (eleTag === 'img') {
         (switcher.detectIE()) ? ele.setAttribute('src', switcher.parseSet(isSrc)) : ele.setAttribute('srcset', isSrc);
