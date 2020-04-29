@@ -2,7 +2,7 @@
 A javascript function that will switch different image source or background source for a single breakpoint or device width.
 
 ## Install
-Download the file or pull it on your local folder. Add it on your script folder and declare it on your main script file.
+Download the js file or pull it on your local folder. Add it on your script folder and declare it on your main script file.
 
 ## Usage
 Switcher works by initializing it and then adding the .js-switcher class on your element and its custom dataset.
