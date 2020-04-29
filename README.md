@@ -23,6 +23,19 @@ Switcher works by initializing it and then adding the .js-switcher class on your
 </pre>
 
 ## Options
+the init function have 2 parameter, onresize and debounceTimer
+
+1. onresize (bolean) - trigger the switcher when the window has been resize. The default value is true.
+2. debounceTimer (number) - trigger the switcher after a certain seconds after the window has been resize. The value is represented on millisecond. The default value is 500(ms).
+
+<pre>
+  <code>
+    window.addEventListener('load', function () {
+      switcher.init(false, 1000);
+    });
+  </code>
+</pre>
+
 ### Datasets
 1. data-breakpoint - by adding this dataset, it will detect the breakpoint on when to switch the image source of your element. Its value will be represented on pixel.
 <pre>
