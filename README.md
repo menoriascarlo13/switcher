@@ -30,9 +30,7 @@ the init function have 2 parameter, onresize and debounceTimer
 
 <pre>
   <code>
-    window.addEventListener('load', function () {
       switcher.init(false, 1000);
-    });
   </code>
 </pre>
 
