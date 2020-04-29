@@ -1,6 +1,5 @@
 let switcher = {}
 const targetClass = 'js-switcher',
-    debounceTimer = 500,
     imgTag = 'img',
     divTag = 'div';
 
@@ -22,14 +21,14 @@ switcher.debounce = (func, wait, immediate) => {
     };
 };
 
-switcher.init = (resize = true) => {
+switcher.init = (onresize = true, debounceTimer = 500) => {
     let ele = document.getElementsByClassName(targetClass);
     if (!ele) return
     for (let i = 0; i < ele.length; i++) {
         if (!ele[i]) return
         switcher.detect(ele[i], ele[i].tagName.toLowerCase());
 
-        if( resize ) {
+        if( onresize ) {
             window.addEventListener('resize', switcher.debounce(() => {
                 switcher.detect(ele[i], ele[i].tagName.toLowerCase());
             }, debounceTimer));
