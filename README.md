@@ -34,7 +34,7 @@ the init function have 2 parameters, onresize and debounceTimer
   </code>
 </pre>
 
-### Datasets
+## Datasets
 1. data-breakpoint - by adding this dataset, it will detect the breakpoint on when to switch the image source of your element. Its value will be represented on pixel.
 <pre>
   <code>&lt;img class='js-switcher' data-breakpoint='900'&gt;</code>
