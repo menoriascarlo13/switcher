@@ -1,11 +1,10 @@
 let switcher = {}
 const targetClass = 'js-switcher',
-    imgTag = 'img',
-    divTag = 'div';
+    debounceTimer = 500;
 
 //credit to underscore
 //https://davidwalsh.name/function-debounce
-switcher.debounce = (func, wait, immediate) => {
+switcher.debounce = function (func, wait, immediate) {
     let timeout;
     return function () {
         let context = this,
@@ -21,25 +20,62 @@ switcher.debounce = (func, wait, immediate) => {
     };
 };
 
-switcher.init = (onresize = true, debounceTimer = 500) => {
+switcher.init = function (resize, debounceTimer) {
+    if (typeof resize === 'undefined') resize = true;
+    if (typeof debounceTimer === 'undefined') debounceTimer = 500;
+
+    switcher.process();
+
+    console.log(switcher.detectIE());
+
+    if (resize) {
+        window.addEventListener('resize', switcher.debounce(function () {
+            switcher.process();
+        }, debounceTimer));
+    }
+}
+
+switcher.process = function () {
     let ele = document.getElementsByClassName(targetClass);
     if (!ele) return
     for (let i = 0; i < ele.length; i++) {
         if (!ele[i]) return
         switcher.detect(ele[i], ele[i].tagName.toLowerCase());
-
-        if( onresize ) {
-            window.addEventListener('resize', switcher.debounce(() => {
-                switcher.detect(ele[i], ele[i].tagName.toLowerCase());
-            }, debounceTimer));
-        }
     }
 }
 
-switcher.detect = (ele, eleTag) => {
-    if (eleTag === imgTag) ele.srcset = (window.innerWidth < ele.dataset.breakpoint) ? ele.dataset.smallimage : ele.dataset.largeimage;
-    if (eleTag === divTag) {
-        let isSrc = (window.innerWidth < ele.dataset.breakpoint) ? ele.dataset.smallimage : ele.dataset.largeimage;
+switcher.detect = function (ele, eleTag) {
+    switcher.parseSet(ele.dataset.largeimage);
+    let isSrc = (window.innerWidth < ele.dataset.breakpoint) ? ele.dataset.smallimage : ele.dataset.largeimage;
+    if (eleTag === 'img') {
+        (switcher.detectIE()) ? ele.setAttribute('src', switcher.parseSet(isSrc)) : ele.setAttribute('srcset', isSrc);
+    } else {
         ele.style.backgroundImage = 'url(' + isSrc + ')';
     }
+}
+
+switcher.parseSet = function(e) {
+    return e.split(',')[0].split(' ')[0];
+}
+
+switcher.detectIE = function () {
+    let ua = window.navigator.userAgent;
+
+    let msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    let trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    let edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+       return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    return false;
 }
