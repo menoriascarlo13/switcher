@@ -1,6 +1,5 @@
 let switcher = {}
-const targetClass = 'js-switcher',
-    debounceTimer = 500;
+const targetClass = 'js-switcher';
 
 //credit to underscore
 //https://davidwalsh.name/function-debounce
